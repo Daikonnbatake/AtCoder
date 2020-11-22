@@ -1,0 +1,1 @@
+print(int(''.join(list(input().split())))*2)

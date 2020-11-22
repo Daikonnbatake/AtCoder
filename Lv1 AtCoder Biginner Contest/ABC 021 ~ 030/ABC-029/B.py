@@ -1,0 +1,1 @@
+print(len([0 for i in range(12) if'r' in list(input())]))

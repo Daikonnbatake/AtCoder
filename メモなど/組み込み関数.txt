@@ -1,0 +1,18 @@
+abs() 絶対値を返す
+all() 渡したiterableの要素のうち全てTrueならばTrueを返す
+any() 渡したiterableの要素のうちどれか一つがTrueならばTrueを返す
+ascii() （たぶん使わない）
+bin() '0bxxxx'のような文字列を返す
+bool() 引数を評価してTrueかFalseを返す
+    breakpoint() （たぶん使わない）
+    bytearray() （たぶん使わない）
+    bytes() （たぶん使わない）
+    callable()（たぶん使わない）
+    chr() （たぶん使わない）
+classmethod() （たぶん使わない）
+    compile() （たぶん使わない）
+    complex() （たぶん使わない）
+    delattr() （たぶん使わない）
+dict() 辞書クラス
+    dir() （たぶん使わない）
+divmod() 2つの引数を取って割り算結果とあまりを出力する ex) divmod(7,2) → (3,1)

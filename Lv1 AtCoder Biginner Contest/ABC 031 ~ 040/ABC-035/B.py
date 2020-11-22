@@ -1,0 +1,5 @@
+S=input()
+d1=abs(S.count("L")-S.count("R"))+abs(S.count("U")-S.count("D"))
+d2=S.count("?")
+if int(input())==1:print(d1+d2)
+else:print(max(len(S)%2,d1-d2))

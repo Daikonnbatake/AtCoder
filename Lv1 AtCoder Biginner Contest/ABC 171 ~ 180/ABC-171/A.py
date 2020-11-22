@@ -1,0 +1,1 @@
+print('A'if ord(input())<97 else'a')
