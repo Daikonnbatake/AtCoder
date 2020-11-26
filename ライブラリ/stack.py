@@ -19,7 +19,3 @@ class Stack():
     
     def pop(self):
         return self.stack.pop()
-
-q = Stack()
-for i in range(10): q.push(chr(97+i))
-for i in range(10):print(q.pop())

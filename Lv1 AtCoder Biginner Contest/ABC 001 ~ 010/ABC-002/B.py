@@ -1,10 +1,1 @@
-W = input()
-
-out = ""
-L = ["a","i","u","e","o"]
-
-for i in range(len(W)):
-    if not W[i] in L:
-        out = out + W[i]
-
-print(out)
+print(''.join([i for i in list(input()) if i not in list('aiueo')]))
