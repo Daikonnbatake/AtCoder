@@ -1,4 +1,3 @@
-#パターン1
 def make_divisors(n):
     lower_divisors , upper_divisors = [], []
     i = 1
@@ -10,14 +9,10 @@ def make_divisors(n):
         i += 1
     return lower_divisors + upper_divisors[::-1]
 
-# パターン2
-def make_divisors(n):
-    divisors = []
-    for i in range(1, int(n**0.5)+1):
-        if n % i == 0:
-            divisors.append(i)
-            if i != n // i:
-                divisors.append(n//i)
+N=int(input())
+ans=0
 
-    divisors.sort()
-    return divisors
+for i in make_divisors(N):
+    if i%2:ans+=2
+
+print(ans)

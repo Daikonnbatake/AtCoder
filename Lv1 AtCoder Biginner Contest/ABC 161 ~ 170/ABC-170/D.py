@@ -1,19 +1,16 @@
-import math # ←これを忘れないように！
-
-def prime(n):
-    if n == 1: return False
-    for i in range(2,int(math.sqrt(n))+1):
-        if n%i == 0: return False
-    return True
-
 N=int(input())
 A=list(map(int,input().split()))
-A.sort()
+MAX=max(A)
+l=[0]*(10**6)
 ans=0
-o=True if 1 in A else False
+
 for i in A:
-    if prime(i) and o: ans+=1
-    else:
-        for j in A:
-            i%j
+    j=1
+    while j*i<=MAX:
+        if j==1: l[j*i-1]+=1
+        else: l[j*i-1]=2
+        j+=1
+for i in A:
+    if l[i-1]<2:ans+=1
+
 print(ans)

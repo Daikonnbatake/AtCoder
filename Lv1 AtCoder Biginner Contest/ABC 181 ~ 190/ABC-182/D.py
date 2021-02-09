@@ -1,12 +1,14 @@
 N=int(input())
 A=list(map(int,input().split()))
-w,h=[0]*N+1,[0]*N
-w[0]=A[0]
-ans=0
-a,b=A[0],0
+
+a,b = [0]*(N+1),[0]*(N+1)
+ma = 0
+ans = 0
+
+for i in range(N):a[i+1] = a[i]+A[i]
+for i in range(1,N):b[i+1] = b[i]+a[i]
 for i in range(1,N+1):
-    w[i]=w[i-1]+A[i]
-    h[i]=w[i-1]+h[i-1]
-    a,b=max(a,w[i]),max(b,h[i])
-    ans=max(ans,a+b)
+    ma = max(ma,a[i])
+    ans = max(ans,b[i]+ma)
+
 print(ans)

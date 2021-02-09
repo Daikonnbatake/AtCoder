@@ -1,16 +1,5 @@
-def factorization(n):
-    arr=[];temp=n
-    for i in range(2, int(-(-n**0.5//1))+1):
-        if temp%i==0:
-            cnt=0
-            while temp%i==0:
-                cnt+=1
-                temp //= i
-            arr.append([i, cnt])
-    if temp!=1: arr.append([temp, 1])
-    if arr==[]: arr.append([n, 1])
-    return arr
-
+def rsum(n):return(n+1)*(n//2)+(n+1)//2 if n%2 else(n+1)*(n//2)
 N=int(input())
-m=factorization(N)
-print(sum([m[i][0]**m[i][1] for i in range(len(m))]))
+ans=0
+for i in range(1,N+1): ans += i * rsum(N//i)
+print(ans)

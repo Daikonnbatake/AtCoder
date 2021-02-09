@@ -1,18 +1,17 @@
 N=int(input())
-p=[list(map(int,input().split()))for i in range(N)]
-p.sort(key=lambda x: x[0])
+L = [list(map(int,input().split()))for i in range(N)]
+L.sort(key=lambda x: x[0]*2+x[1])
 
-aoki=0
-takahashi=0
+aoki = sum([a for a,b in L])
+takahashi = 0
+pos = N-1
+ans = 0
 
-ans=0
-
-for a,t in p:takahashi+=a+t
-
-for a,t in p:
-    aoki += a
-    takahashi -= a+t
-    if aoki >= takahashi: break
+while aoki >= takahashi:
+    a,b = L[pos]
+    aoki -= a
+    takahashi += a+b
+    pos -= 1
     ans+=1
 
-print(N-ans)
+print(ans)
