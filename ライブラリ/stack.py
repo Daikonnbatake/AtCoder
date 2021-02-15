@@ -19,3 +19,14 @@ class Stack():
     
     def pop(self):
         return self.stack.pop()
+
+# 短縮版
+
+from collections import deque
+from itertools import islice
+
+class Stack():
+    def __init__(self):self.stack = deque()
+    def __len__(self): return len(self.stack)
+    def push(self, value):self.stack.append(value)
+    def pop(self):return self.stack.pop()

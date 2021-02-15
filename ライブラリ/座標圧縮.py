@@ -1,0 +1,1 @@
+def compress(l):return {e:i for i,e in enumerate(sorted(l))}
