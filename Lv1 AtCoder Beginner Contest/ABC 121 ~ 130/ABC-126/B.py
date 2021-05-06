@@ -1,6 +1,2 @@
 S=input()
-a=int(S[:2]); b=int(S[2:])
-if 0<a and a<13 and 0<b and b<13: print('AMBIGUOUS')
-elif 0<a and a<13: print('MMYY')
-elif 0<b and b<13: print('YYMM')
-else: print('NA')
+a,b=int(S[:2]),int(S[2:])

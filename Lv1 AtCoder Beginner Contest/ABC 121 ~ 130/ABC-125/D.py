@@ -1,14 +1,11 @@
 N=int(input())
 A=list(map(int,input().split()))
-dp=[float('inf')*-1]*N
-dp[0]=0
+dp=[0]*N
 
 for i in range(1,N):
-    a=A[i-1]+A[i]
-    b=(A[i-1]*-1)+(A[i]*-1)
-    if a<b:
-        A[i-1]*=-1
-        A[i]*=-1
-    dp[i]=dp[i-1]+max(a,b)
+    a=dp[i-1]+A[i-1]+A[i]
+    b=dp[i-1]+(A[i-1]*(-2 if 1<i else -1))+(A[i]*-1)
+    dp[i]=max(a,b)
+    if a<b:A[i-1]*=-1;A[i]*=-1
 
-print(dp)
+print(sum(A))

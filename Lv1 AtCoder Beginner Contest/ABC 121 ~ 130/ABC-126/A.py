@@ -1,4 +1,4 @@
 N,K=map(int,input().split())
 S=list(input())
-S[K-1]='a' if S[K-1]=='A' else ('b' if S[K-1]=='B' else 'c')
+S[K-1]=chr(ord(S[K-1])+32)
 print(''.join(S))

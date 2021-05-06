@@ -1,8 +1,10 @@
-import itertools as itr
+from collections import Counter as c
 N=int(input())
-A=list(map(int,input().split()))
-a=[0]*401
+A=map(int,input().split())
+C=c()
 ans=0
-for i in A:a[i+200]+=1
-for i,j in itr.combinations(range(401),2):
-    ans+=(a[i]-a[j])
+for a in A:
+    for k,v in C.items():
+        ans += v*((k-a)**2)
+    C[a]+=1
+print(ans)

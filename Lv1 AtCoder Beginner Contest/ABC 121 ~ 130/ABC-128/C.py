@@ -1,16 +1,16 @@
 N,M=map(int,input().split())
-L=[[]for i in range(M)]
-for i in range(M):L[i]=list(map(int,input().split()))[1:]
+l=[list(map(int,input().split()))for i in range(M)]
 p=list(map(int,input().split()))
 ans=0
-
 for i in range(1<<N):
-    l=[0]*N
-    q=[0]*M
-    for j in range(N):l[j]=i>>j&1
+    s=[0]*N
+    ok=True
+    for j in range(N):
+        if i>>j&1:s[j]=1
     for j in range(M):
-        for k in L[j]:
-            q[j]+=1 if l[k-1]else 0
-    for j in range(M):q[j]%=2
-    if p==q:ans+=1
+        m=0
+        for k in range(1,l[j][0]+1):
+            if s[l[j][k]-1]:m+=1
+        if m%2!=p[j]:ok=False
+    if ok:ans+=1
 print(ans)
