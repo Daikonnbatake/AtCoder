@@ -1,11 +1,12 @@
 N=int(input())
-A=list(map(int,input().split()))
-dp=[0]*N
+A=tuple(map(int,input().split()))
+p,m=0,0
 
-for i in range(1,N):
-    a=dp[i-1]+A[i-1]+A[i]
-    b=dp[i-1]+(A[i-1]*(-2 if 1<i else -1))+(A[i]*-1)
-    dp[i]=max(a,b)
-    if a<b:A[i-1]*=-1;A[i]*=-1
+for i in A:
+    if i<0: m+=1
+    else: p+=1
 
-print(sum(A))
+a=sum([abs(i) for i in A])
+
+if m%2==0: print(a)
+else:print(a-(min([abs(i) for i in A])*2))

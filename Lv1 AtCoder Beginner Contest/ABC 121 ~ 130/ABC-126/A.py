@@ -1,4 +1,3 @@
 N,K=map(int,input().split())
-S=list(input())
-S[K-1]=chr(ord(S[K-1])+32)
-print(''.join(S))
+S=input()
+print((S[:K-1]if 0<=K-2 else '')+S[K-1].lower()+S[K:])

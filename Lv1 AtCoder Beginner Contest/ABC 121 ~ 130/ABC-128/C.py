@@ -1,16 +1,22 @@
 N,M=map(int,input().split())
-l=[list(map(int,input().split()))for i in range(M)]
+k,s=[0]*M,[[]for i in range(M)]
+for i in range(M):
+    tmp=list(map(int,input().split()))
+    k[i]=tmp[0]
+    s[i]=tmp[1:]
 p=list(map(int,input().split()))
+
 ans=0
 for i in range(1<<N):
-    s=[0]*N
-    ok=True
-    for j in range(N):
-        if i>>j&1:s[j]=1
+    S=[0]*N
+    f=False
+    for j in range(N):S[j]=i>>j&1
     for j in range(M):
         m=0
-        for k in range(1,l[j][0]+1):
-            if s[l[j][k]-1]:m+=1
-        if m%2!=p[j]:ok=False
-    if ok:ans+=1
+        for l in range(k[j]):m=(m+S[s[j][l]-1])%2
+        if p[j]!=m:
+            f=True
+            break
+    if f:continue
+    ans+=1
 print(ans)

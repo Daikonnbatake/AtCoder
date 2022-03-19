@@ -1,20 +1,21 @@
-import math as m
- 
+import math
 N=int(input())
-A=list(map(int,input().split()))
- 
-l,r=[0]*(N+1),[0]*(N+1)
-l[0],r[-1]=A[0],A[-1]
-ans=1
- 
-for i in range(1,N+1):l[i]=m.gcd(l[i-1],A[i-1])
-for i in range(1,N+1):r[N-i]=m.gcd(r[N-i+1],A[N-i])
-l,r=l[1:],r[:-1]
- 
+A=tuple(map(int,input().split()))
+L,R=0,[0]*N
+R[-1]=A[-1]
+ans=0
+
+for i in range(1,N):
+    i=N-i
+    R[i-1] = math.gcd(A[i-1],R[i])
+
 for i in range(N):
-    if i==0:a=r[1]
-    elif i==N-1:a=l[-2]
-    else:a=m.gcd(l[i-1],r[i+1])
-    ans=max(ans,a)
-    
+    if i==0:
+        ans=max(ans, R[1])
+    elif i==N-1:
+        ans=max(ans,L)
+    else:
+        ans=max(ans,math.gcd(L,R[i+1]))
+    L=math.gcd(L,A[i])
+
 print(ans)

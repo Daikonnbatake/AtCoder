@@ -1,25 +1,22 @@
-import bisect
-class BinSearch():
-    def __init__(self,l):self.l = l
-    def under_n(self,n):return bisect.bisect_right(self.l,n)
-
 N,M=map(int,input().split())
 A=sorted(list(map(int,input().split())))
-bc=sorted([list(map(int,input().split()))for i in range(M)],key=lambda x:x[1],reverse=True)
+ans=0
+mask=[0]*N
 
-f=False
-pos=0
+query=dict()
+for b,c in [map(int,input().split()) for i in range(M)]:
+    if c in query: query[c]+=b
+    else: query[c]=b
 
-for b,c in bc:
-    for i in range(b):
-        if c<=A[pos]:
-            f=True
-            break
-        A[pos]=c
-        pos+=1
-        if pos==N:
-            f=True
-            break
-    if f:break
+for c,b in sorted(query.items(), key=lambda x: -x[1]):
+    mask[min(N-1,b-1)]=max(mask[min(N-1,b-1)], c)
 
-print(sum(A))
+for i in range(1,N):
+    i=N-i-1
+    mask[i]=max(mask[i+1],mask[i])
+
+for i in range(N):ans+=max(A[i],mask[i])
+
+print(ans)
+print(A)
+print(mask)

@@ -1,21 +1,23 @@
 import sys
-sys.setrecursionlimit(1000000)
+sys.setrecursionlimit(10**9)
 
 N=int(input())
 G=[[]for i in range(N)]
-color=[0]*N
 seen=[0]*N
 
-for i in range(N-1):
-    u,v,w=map(int,input().split())
-    G[u-1].append([v-1,w%2])
-    G[v-1].append([u-1,w%2])
+# G[i][0] = 接続先頂点, G[i][1] = 辺のコスト
+for u,v,w in [map(int,input().split()) for i in range(N-1)]:
+    G[u-1].append([v-1,w])
+    G[v-1].append([u-1,w])
 
-def dfs(now,pc):
-    if seen[now]:return
-    seen[now]=1
-    color[now]=pc
-    for i,c in G[now]:
-        dfs(i,(pc+c)%2)
+def dfs(now, cost):
+    if seen[now]: return
+    seen[now]=cost
+    if now==0:seen[now]=1
+    for v,w in G[now]:dfs(v, w+cost)
+    return
+
 dfs(0,0)
-for i in color:print(i)
+seen[0]=0
+
+for i in seen: print(i%2)

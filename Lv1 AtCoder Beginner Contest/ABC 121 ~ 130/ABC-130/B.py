@@ -1,7 +1,8 @@
 N,X=map(int,input().split())
-L=list(map(int,input().split()))
-mem=0; ans=1
-for i in L:
-    mem+=i
-    if mem<=X: ans+=1
+ans=1
+a=0
+for L in map(int,input().split()):
+    a+=L
+    if X<a:break
+    ans+=1
 print(ans)

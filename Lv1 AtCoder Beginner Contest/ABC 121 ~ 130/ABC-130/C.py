@@ -1,2 +1,8 @@
-W,H,x,y=map(int,input().split())
-print((W*H)/2,1 if (x==W/2 and y==H/2) else 0)
+from decimal import Decimal as d
+import decimal
+W,H,x,y=map(decimal,input().split())
+
+a=0
+for w in [0,W,W,0]:
+    for h in [0,0,H,H]:
+        a=max(a, )
